@@ -1,18 +1,43 @@
 import React from 'react';
+import {useState}from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {updateSelected} from '../spot/spot-actions';
 import SpotList from './spot-list/SpotList';
+import SpotDetails from './spot-details/SpotDetails';
+import Modal from '../common/Modal';
 
 const Search = ({selectedSpot, spots, setSpot}) => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const onModalClose = () => {
+        setModalOpen(false);
+    };
+
+    const setSpotCallback = (spot) => {
+        setModalOpen(true);
+        setSpot(spot);
+    };
+
     return (
         <div className="Search">
             <SpotList
                 spots={spots}
                 selectedSpot={selectedSpot}
-                setSpot={setSpot}
+                setSpot={setSpotCallback}
             />
-            <div className="Search-content" />
+            <div className="Search-content">
+                {modalOpen && (
+                    <Modal
+                        className={"Spot-details-modal"}
+                        title={"Spot Details"}
+                        isOpen={modalOpen}
+                        onClose={onModalClose}
+                    >
+                        <SpotDetails selectedSpot={selectedSpot} />
+                    </Modal>
+                )}
+            </div>
         </div>
     );
 };

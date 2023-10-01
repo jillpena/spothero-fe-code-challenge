@@ -1,0 +1,36 @@
+.FormField {
+    margin-bottom: 15px;
+    input {
+        @include font-size(1.6);
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid $color-cement;
+        border-radius: 3px;
+        outline: none;
+        &:active,
+        &:focus-visible,
+        &:focus {
+            border: 1px solid $color-go;
+        }
+    }
+
+    label {
+        display: block;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.FormField-error {
+    input {
+        border: 2px solid $color-stop;
+        outline: none;
+    }
+    label {
+        color: $color-stop;
+    }
+}
+
+.error-message {
+    color: $color-stop;
+}

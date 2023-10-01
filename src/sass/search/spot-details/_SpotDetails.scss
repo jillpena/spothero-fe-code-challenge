@@ -1,0 +1,15 @@
+.SpotDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .Spot-details-button {
+        color: $color-white;
+        background-color: $color-shift;
+        margin: 20px auto 0;
+        &:hover {
+            background-color: $color-shift-hover;
+            color: $color-white;
+        }
+    }
+}
